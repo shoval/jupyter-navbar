@@ -1,6 +1,8 @@
 # jupyter-navbar
 Add a handy navigation pane for Jupyter Notebook that follows markdown headers
 
+![Screenshot of jupyter-navbar](https://raw.githubusercontent.com/shoval/jupyter-navbar/master/screenshots/navbar_screenshot.png)
+
 ## Installation 
 
 Place `navbar.css` and `navbar.js` in the `.jupyter/custom/` directory.
