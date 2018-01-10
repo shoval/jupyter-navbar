@@ -66,4 +66,6 @@ navbar = {
   },
 }
 
-navbar.init();
+if ($('body').hasClass('notebook_app')) {
+  navbar.init();
+}
