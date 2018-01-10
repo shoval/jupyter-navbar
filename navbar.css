@@ -1,0 +1,37 @@
+
+#main_wrapper {
+  position: relative;
+}
+
+#split_wrapper {
+  display: flex;
+  height: 100%;
+  flex-direction: row;
+}
+
+#site_wrapper {
+  flex-grow: 1;
+  overflow: auto:
+}
+
+#site {
+  overflow: initial:
+}
+
+#nav_wrapper {
+  /*overflow: scroll;*/
+  resize: horizontal;
+  width: 300px;
+  
+  border-right: 2px solid #aaa;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+#navbar {
+  padding: 15px 5px 0;
+}
+
+#navbar ul, #navbar ol {
+  padding-left: 20px;
+}
