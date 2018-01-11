@@ -1,5 +1,6 @@
 # jupyter-navbar
-Add a handy navigation pane for Jupyter Notebook that follows markdown headers
+A handy navigation pane for Jupyter Notebook.
+jupyter-navbar searches for headers written in markdown cells, and displays links to them in the sidebar in a hierarchical fashion. The sidebar is resizable.
 
 ![Screenshot of jupyter-navbar](https://raw.githubusercontent.com/shoval/jupyter-navbar/master/screenshots/navbar_screenshot.png)
 
