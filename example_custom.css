@@ -4,4 +4,5 @@
   If it doesn't exist, create it.
 */
 
-@import url("navbar.css");
+@import url("jupyter-navbar/navbar.css");
+

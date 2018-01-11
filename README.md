@@ -1,23 +1,24 @@
 # jupyter-navbar
 A handy navigation pane for Jupyter Notebook.
-jupyter-navbar searches for headers written in markdown cells, and displays links to them in the sidebar in a hierarchical fashion. The sidebar is resizable.
+Jupyter-navbar searches for headers written in markdown cells, and displays links to them in the sidebar in a hierarchical fashion. The sidebar is resizable and can be toggled.
 
 ![Screenshot of jupyter-navbar](https://raw.githubusercontent.com/shoval/jupyter-navbar/master/screenshots/navbar_screenshot.png)
 
 ## Installation 
 
-Place `navbar.css` and `navbar.js` in the `.jupyter/custom/` directory.
-The `.jupyter` directory should be in your home directory:
+Either clone or download/extract jupyter-navbar into the `.jupyter/custom/` directory, such that the files `navbar.css` and `navbar.js` are under `.jupyter/custom/jupyter-navbar/`.
+
+__Note:__ the `.jupyter` directory should be inside your home directory:
 * In Linux: `~/.jupyter`
 * In Windows: `%HOMEPATH%\.jupyter`
 
 Copy and paste the following code into `.jupyter/custom/custom.js`:
 
-    $.getScript("/custom/navbar.js");
+    $.getScript("/custom/jupyter-navbar/navbar.js");
 
 Copy and paste the following code _at the very top_ of `.jupyter/custom/custom.css`:
 
-    @import url("navbar.css");
+    @import url("jupyter-navbar/navbar.css");
 
 The code in `custom.css` and `custom.js` gets automatically executed when a notebook is loaded. In turn, the navbar code gets called.
 

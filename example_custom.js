@@ -7,4 +7,4 @@
 /***********
  * Nav bar *
  ***********/
-$.getScript("/custom/navbar.js");
+$.getScript("/custom/jupyter-navbar/navbar.js");
