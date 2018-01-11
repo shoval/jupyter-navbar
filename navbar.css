@@ -19,19 +19,50 @@
 }
 
 #nav_wrapper {
-  /*overflow: scroll;*/
   resize: horizontal;
   width: 300px;
   
   border-right: 2px solid #aaa;
   overflow-x: hidden;
   overflow-y: auto;
+  position: relative;
 }
 
 #navbar {
-  padding: 15px 5px 0;
+  padding: 15px 10px 0 5px;
 }
 
 #navbar ul, #navbar ol {
   padding-left: 20px;
+}
+
+#nav_toggle {
+    width: 10px;
+    height: 50px;
+    background-color: rgba(128,128,128,0.5);
+    position: absolute;
+    right: 0;
+    top: 50%;
+    cursor: pointer;
+    border: 1px solid;
+    opacity: 0.5;
+}
+
+#nav_toggle::after {
+    content: '«';
+    position: absolute;
+    top: 28%;
+}
+
+#nav_wrapper.collapsed {
+  width: 10px !important; 
+  resize: none;
+}
+
+#nav_wrapper.collapsed #navbar {
+  display: none;
+}
+
+#nav_wrapper.collapsed  #nav_toggle::after {
+    content: '»';
 }

@@ -37,11 +37,9 @@ navbar = {
   rebuild: function() {
     var nav_obj = $('#'+navbar.nav_id);  
     nav_obj.html(navbar.get_html());
-    console.log('Nav rebuilt');
   },
 
   first_build: function() {
-    console.log('Nav first build');
     navbar.rebuild();
     
     requirejs(['base/js/events'], function (events) {
@@ -50,14 +48,15 @@ navbar = {
   },
   
   init: function() {
-    console.log('Nav init');
     // Wrap the main content to allow the resizable nav-bar
     $('#site').wrap('<div id="main_wrapper"><div id="split_wrapper"><div id="site_wrapper"></div></div></div>');
-    $('<div id="nav_wrapper"><div id="'+navbar.nav_id+'"><small>Loading...</small></div></div>').insertBefore('#site_wrapper');
+    $('<div id="nav_wrapper"><div id="'+navbar.nav_id+'"><small>Loading...</small></div><div id="nav_toggle"></div></div>').insertBefore('#site_wrapper');
     
-    $( window ).resize(function() {
+    $(window).resize(function() {
       $('#nav_wrapper').height($(window).height() - $('#header').height());
     });
+    
+    $('#nav_toggle').click(function() {$('#nav_wrapper').toggleClass('collapsed')});
 
     
     requirejs(['base/js/events'], function (events) {
