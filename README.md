@@ -2,7 +2,7 @@
 A handy navigation pane for Jupyter Notebook.
 Jupyter-navbar searches for headers written in markdown cells, and displays links to them in the sidebar in a hierarchical fashion. The sidebar is resizable and can be toggled.
 
-![Screenshot of jupyter-navbar](https://raw.githubusercontent.com/shoval/jupyter-navbar/master/screenshots/navbar_screenshot.png)
+![Screenshot of jupyter-navbar](https://raw.githubusercontent.com/shoval/jupyter-navbar/master/screenshots/navbar_screenshot.png?v=2)
 
 ## Installation 
 
