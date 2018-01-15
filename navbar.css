@@ -46,6 +46,7 @@
     cursor: pointer;
     border: 1px solid;
     opacity: 0.5;
+    border-width: 1px 0 1px 1px;
 }
 
 #nav_toggle::after {
