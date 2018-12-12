@@ -10,6 +10,22 @@ navbar = {
   /*************
    * Functions *
    *************/
+  scrollTo: function(o) {
+    console.log('Object is: '+o.innerText);
+    var s = o.innerText;
+    var allHeaders = $('[id='+s+']');  // All headers containing this text
+    if (allHeaders.length > 1) {
+      // There are multiple headers containing the same text. Cannot use anchors; must scroll with JS.
+      var idx = $('#'+navbar.nav_id+' [href=\\#'+s+']').index(o);  // Which one am I?
+      allHeaders[idx].scrollIntoView();
+      history.pushState("", document.title, window.location.pathname + window.location.search); // Remove hash from URL
+      return false;
+    } else {
+      // One unique header - scroll using default behavior of anchors
+      return true;
+    }
+  },
+  
   get_html: function() {
     var open_tag = '<' + navbar.list_tag + '>';
     var close_tag = '</' + navbar.list_tag + '>';
@@ -19,7 +35,7 @@ navbar = {
     for (i=0; i<hs.length; i++) {
       x = hs[i]
       level = parseInt(x.tagName.substr(1));
-      txt = '<li><a href=#' + x.id + '>' + x.innerText.replace(/¶$/, '') + '</a></li>';
+      txt = '<li><a href=#' + x.id + ' onclick="return navbar.scrollTo(this);">' + x.innerText.replace(/¶$/, '') + '</a></li>';
       diff = level - prev_level;
       for (j=0; j<diff; j++) {
         txt = open_tag + txt;
