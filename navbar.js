@@ -12,7 +12,7 @@ navbar = {
    *************/
   scrollTo: function(o) {
     console.log('Object is: '+o.innerText);
-    var s = o.innerText;
+    var s = $.escapeSelector(o.innerText.replace(/ /g, '-'));
     var allHeaders = $('[id='+s+']');  // All headers containing this text
     if (allHeaders.length > 1) {
       // There are multiple headers containing the same text. Cannot use anchors; must scroll with JS.
