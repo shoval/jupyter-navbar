@@ -35,13 +35,22 @@ navbar = {
     for (i=0; i<hs.length; i++) {
       x = hs[i]
       level = parseInt(x.tagName.substr(1));
-      txt = '<li><a href=#' + x.id + ' onclick="return navbar.scrollTo(this);">' + x.innerText.replace(/¶$/, '') + '</a></li>';
       diff = level - prev_level;
-      for (j=0; j<diff; j++) {
+      if (diff > 1) {
+        // Case of level skipping (e.g. h4 after h2)
+        txt = '<li>&nbsp;</li>';  // Add empty list item
+        i--;  // This step will be repeated, but with one extra parent in between
+        level = prev_level + 1;  // We now simulate a higher level (in our example, h3)
+        diff--;
+      } else {
+        txt = '<li><a href=#' + x.id + ' onclick="return navbar.scrollTo(this);">' + x.innerText.replace(/¶$/, '') + '</a></li>';
+      }
+      if (diff > 0) {
+        all_txt = all_txt.slice(0,-5);  // Remove '</li>' sufix
         txt = open_tag + txt;
       }
       for (j=diff; j<0; j++) {
-        txt = close_tag + txt;
+        txt = close_tag + '</li>' + txt;
       }
       prev_level = level
       all_txt += txt
