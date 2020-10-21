@@ -26,6 +26,22 @@ navbar = {
     }
   },
   
+  setCookie: function(key, value, expiry) {
+    var expires = new Date();
+    expires.setTime(expires.getTime() + (expiry * 24 * 60 * 60 * 1000));
+    document.cookie = key + '=' + value + ';expires=' + expires.toUTCString() + ';samesite=lax';
+  },
+  
+  getCookie: function(key) {
+    var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
+    return keyValue ? keyValue[2] : null;
+  },
+  
+  eraseCookie: function(key) {
+    var keyValue = navbar.getCookie(key);
+    navbar.setCookie(key, keyValue, '-1');
+  },
+  
   get_html: function() {
     var open_tag = '<' + navbar.list_tag + '>';
     var close_tag = '</' + navbar.list_tag + '>';
@@ -77,17 +93,26 @@ navbar = {
     $('#site').wrap('<div id="main_wrapper"><div id="split_wrapper"><div id="site_wrapper"></div></div></div>');
     $('<div id="nav_wrapper"><div id="'+navbar.nav_id+'"><small>Loading...</small></div><div id="nav_toggle"></div></div>').insertBefore('#site_wrapper');
     
+    // Check of there is a cookie marking navbar as collapsed
+    if (navbar.getCookie('navbar_collapsed') == "true"){
+      $('#nav_wrapper').addClass('collapsed');
+    }
+    
     $(window).resize(function() {
       $('#nav_wrapper').height($(window).height() - $('#header').height());
     });
     
-    $('#nav_toggle').click(function() {$('#nav_wrapper').toggleClass('collapsed')});
+    $('#nav_toggle').click(function() {
+      var collapsed = $('#nav_wrapper').toggleClass('collapsed').hasClass('collapsed');
+      navbar.setCookie('navbar_collapsed', collapsed, 1000);  // Store collapse state in cookie
+    });
 
     
     requirejs(['base/js/events'], function (events) {
       events.one('kernel_idle.Kernel', navbar.first_build);
     });
   },
+
 }
 
 if ($('body').hasClass('notebook_app')) {
