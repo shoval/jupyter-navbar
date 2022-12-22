@@ -11,7 +11,7 @@ Jupyter-navbar searches for headers written in markdown cells, and displays link
 1. Clone or download/extract jupyter-navbar
 2. Run `python setup.py` from within the directory
 
-__Note:__ the code in `setup.py` was tested using Python 2.7, but should work on Python 3 as well. If you have any trouble, you may proceed to manual installation.
+__Note:__ if you have any trouble with `setup.py`, you may proceed to manual installation.
 
 ### Manual installation
 
